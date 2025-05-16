@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Montserrat:200,400,700&display=swap&subset=latin-ext"rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://kit.fontawesome.com/be1032a037.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="todo">
+        <div class="header">
+            <h1>ToDo List</h1>
+            <input type="text" class="todo-input" placeholder="Add a new task...">
+            <button class="add-btn">Add</button>
+        </div>
+
+        <div class="todo-list">
+           <h3>Task list:</h3>
+           <p class="alert-info">There is no tasks on the list.</p>
+           <ul>
+                <li class="test">
+                    Finish the project
+                    <div class="tools">
+                        <button class="complete"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="delete-btn"><i class="fa-solid fa-times"></i></button>
+                    </div>
+                </li>
+                <li class="test2">
+                    Write the documentation
+                    <div class="tools">
+                        <button class="complete"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="delete-btn"><i class="fa-solid fa-times"></i></button>
+                    </div>
+                </li>
+                <li class="test3">
+                    Test the application
+                    <div class="tools">
+                        <button class="complete"><i class="fas fa-check"></i></button>
+                        <button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="delete-btn"><i class="fa-solid fa-times"></i></button>
+                    </div>
+                </li>
+           </ul>
+        </div>
+    </div>
+    <div class="popup">
+        <h3>Edit task:</h3>
+        <div class="popup-body">
+            <p class="popup-info"></p>
+            <input type="text" class="popup-input" placeholder="Enter a new task content...">
+            <button class="popup-btn accept">Confirm</button>
+            <button class="popup-btn cancel">Cancel</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
