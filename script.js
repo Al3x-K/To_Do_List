@@ -34,6 +34,8 @@ const prepareDOMEvents = () => {
     $addBtn.addEventListener('click', addNewTask);
     $todoInput.addEventListener('keyup', enterCheck);
     $ulList.addEventListener('click', checkClick);
+    $addPopupBtn.addEventListener('click', changeTask);
+    $closeTodoBtn.addEventListener('click', closePopup);
 }
 
 const addNewTask = () => {
@@ -95,7 +97,7 @@ const checkClick = (e) =>
         } 
         else if(e.target.closest('button').classList.contains('edit-btn'))
         {
-            console.log('edit');
+            editTask(e);
         } 
         else if(e.target.closest('button').classList.contains('delete-btn'))
         {
@@ -119,5 +121,34 @@ const deleteTask = (e) =>
     }
 }
 
+const editTask = (e) =>
+{
+    const oldTodo = e.target.closest('li').id;
+    $editedTodo = document.getElementById(oldTodo);
+
+    $popup.style.display = 'flex';
+    $popupInfo.innerText = `Edit the task: ${$editedTodo.innerText}`;
+    $popupInput.value = $editedTodo.firstChild.textContent;  
+}
+
+const changeTask = () =>
+{
+    if($popupInput.value === '')
+    {
+        $popupInfo.innerText = 'You need to enter something.';
+    }
+    else
+    {
+        $editedTodo.firstChild.textContent = $popupInput.value;
+        $popup.style.display = 'none';
+        $popupInfo.innerText = '';
+    }
+}
+
+const closePopup = () =>
+{
+    $popup.style.display = 'none';
+    $popupInfo.innerText = '';
+}
 
 document.addEventListener('DOMContentLoaded', main);
