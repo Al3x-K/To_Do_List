@@ -33,6 +33,7 @@ const prepareDOMElements = () => {
 const prepareDOMEvents = () => {
     $addBtn.addEventListener('click', addNewTask);
     $todoInput.addEventListener('keyup', enterCheck);
+    $ulList.addEventListener('click', checkClick);
 }
 
 const addNewTask = () => {
@@ -81,6 +82,42 @@ const createToolsArea = () =>
     toolsPanel.appendChild(completeBtn);
     toolsPanel.appendChild(editBtn);
     toolsPanel.appendChild(deleteBtn);
-      
 }
+
+const checkClick = (e) => 
+{
+    if(e.target.classList.value !== '')
+    {
+        if(e.target.closest('button').classList.contains('complete'))
+        {
+            e.target.closest('li').classList.toggle('completed');
+            e.target.closest('button').classList.toggle('completed');
+        } 
+        else if(e.target.closest('button').classList.contains('edit-btn'))
+        {
+            console.log('edit');
+        } 
+        else if(e.target.closest('button').classList.contains('delete-btn'))
+        {
+            deleteTask(e);
+        }
+    }
+}
+
+const deleteTask = (e) =>
+{
+    const deleteTodo = e.target.closest('li');
+    deleteTodo.remove();
+
+    if($allTasks.length === 0)
+    {
+        $alertInfo.innerText = 'There is no tasks on the list.';
+    }
+    else
+    {
+        $alertInfo.innerText = '';
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', main);
